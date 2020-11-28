@@ -1,6 +1,8 @@
 package com.ming.controller;
 
 import com.ming.po.Items;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
@@ -13,7 +15,8 @@ import java.util.List;
 /**
  * 实现controller接口的处理器
  */
-public class ItemsCOntroller1 implements Controller {
+public class ItemsController1 implements Controller {
+
     @Override
     public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         //调用service查找数据库，查询商品列表，使用静态数据模拟
