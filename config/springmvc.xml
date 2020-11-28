@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-tx.mvc">
+    <context:component-scan base-package="com.ming.controller"/>
+
+    <!--配置处理器适配器
+    1. 所有的适配器都实现了HandlerAdapter接口
+    源码：此适配器SimpleControllerHandlerAdapter实现Controller接口的Handler
+    public boolean supports(Object handler) {
+      return handler instanceof Controller;
+     }
+     2.开发Handler,需要实现Controller接口，才能由SimpleControllerHandlerAdapter适配器来执行
+    -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter">
+    </bean>
+    <!--配置处理器映射器
+    将bean的name来作为url进行查找，需要配置Handler时指定你的bean name(就是url)
+    -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+    </bean>
+    <!--配置Handler就是controller，在spring容器中加载-->
+    <bean name="/queryItems.action" class="com.ming.controller.ItemsCOntroller1">
+    </bean>
+    <!--视图解析器
+    解析jsp视图，默认使用jstl标签，classpath下面有jstl的包
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    </bean>
+</beans>
