@@ -24,8 +24,8 @@ public class ItemsController {
     @RequestMapping("/queryItems")
     public ModelAndView queryItems() throws Exception {
         ModelAndView model = new ModelAndView();
-        List<ItemsCustom> itemList = itemService.findItemsList(null);
-        model.addObject("itemList",itemList);
+        List<ItemsCustom> itemsList = itemService.findItemsList(null);
+        model.addObject("itemsList",itemsList);
         model.setViewName("/items/itemsList");
         return model;
     }
