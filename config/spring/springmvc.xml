@@ -34,7 +34,4 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-   <import resource="apllictionContext-transaction.xml"></import>
-   <import resource="applicationContext-dao.xml"></import>
-   <import resource="apllictionContext-service.xml"></import>
 </beans>
