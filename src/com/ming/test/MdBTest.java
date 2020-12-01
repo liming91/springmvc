@@ -17,7 +17,7 @@ public class MdBTest {
     public static void main(String[] args) throws Exception {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
-        File configFile = new File("classpath:mybatis/generatorConfig_local.xml");
+        File configFile = new File("E:\\javacode\\idea_workspace\\springmvcpro\\config\\mybatis\\generatorConfig_local.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);

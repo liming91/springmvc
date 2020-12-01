@@ -11,4 +11,8 @@ import java.util.List;
 public interface ItemsService {
     //商品列表查询
     public List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+    //根据id查询商品信息
+    public ItemsCustom findItemsById(Integer id) throws Exception;
+    //修改商品信息
+    public void updateItemsById(Integer id,ItemsCustom itemsCustom) throws Exception;
 }
