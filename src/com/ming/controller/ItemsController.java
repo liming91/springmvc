@@ -81,9 +81,6 @@ public class ItemsController {
      */
     @RequestMapping(value = "/deleteItemsBatch",method = {RequestMethod.POST})
     public String deleteItemsBatch(Integer[] items_id){
-        log.info("删除的id:"+items_id);
-
-
         itemService.deleteBatchItems(items_id);
         return "forward:/items/queryItems.action";
     }

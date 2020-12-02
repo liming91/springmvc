@@ -47,10 +47,10 @@ public class ItemsServiceImpl implements ItemsService{
     }
 
     @Override
-    public void deleteBatchItems(Integer[] itemsId) {
-        if(itemsId.length<0){
+    public void deleteBatchItems(Integer[] items_id) {
+        if(items_id.length<0){
             throw new RuntimeException("参数为空！");
         }
-        itemsMapperCustom.deleteBatchItems(itemsId);
+        itemsMapperCustom.deleteBatchItems(items_id);
     }
 }

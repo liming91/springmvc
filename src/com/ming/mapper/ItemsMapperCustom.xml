@@ -21,7 +21,7 @@
      <include refid="query_items_where"></include>
      </where>
   </select>
-    <sql id="batch_delete_items_where">
+    <sql id="batch_delete_items_where" >
         <if test="array!=null">
             <foreach collection="array" item="item" index="index" open="id in (" close=")" separator="," >
                 #{item}
@@ -29,7 +29,7 @@
         </if>
     </sql>
     <!--批量删除-->
-    <delete id="deleteBatchItems" parameterType="Integer[]">
+    <delete id="deleteBatchItems"  parameterType="java.lang.Integer" >
     delete from items
     <where>
         <include refid="batch_delete_items_where"></include>
