@@ -47,6 +47,13 @@ public class ItemsServiceImpl implements ItemsService{
     }
 
     @Override
+    public void updateBatchItems(List<ItemsCustom> customList) {
+        if(customList.size()>0){
+            itemsMapperCustom.updateBatchItems(customList);
+        }
+    }
+
+    @Override
     public void deleteBatchItems(Integer[] items_id) {
         if(items_id.length<0){
             throw new RuntimeException("参数为空！");

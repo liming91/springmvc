@@ -6,6 +6,7 @@ import com.ming.service.ItemsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -85,4 +86,28 @@ public class ItemsController {
         return "forward:/items/queryItems.action";
     }
 
+    /**
+     * 批量修改的页面
+     * @param request
+     * @param items_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/updateView")
+    public ModelAndView updateView(HttpServletRequest request,Integer[] items_id) throws Exception {
+        ModelAndView model = new ModelAndView();
+        ItemsQueryVo itemsQueryVo =new ItemsQueryVo();
+        itemsQueryVo.setId(items_id);
+        List<ItemsCustom> itemsList = itemService.findItemsList(itemsQueryVo);
+        model.addObject("itemsList",itemsList);
+        model.setViewName("/items/updateView");
+        return model;
+
+    }
+
+    @RequestMapping("/updateItemsBatch")
+    public String updateItemsBatch(ItemsQueryVo itemsQueryVo){
+        itemService.updateBatchItems(itemsQueryVo.getItemsCustomList());
+        return "forward:/items/queryItems.action";
+    }
 }

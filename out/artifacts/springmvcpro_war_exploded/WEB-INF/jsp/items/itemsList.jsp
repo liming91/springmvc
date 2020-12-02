@@ -15,6 +15,11 @@
             document.itemsForm.action="${pageContext.request.contextPath}/items/queryItems.action";
             document.itemsForm.submit();
         }
+        function updateItemsBatch() {
+            //提交form
+            document.itemsForm.action="${pageContext.request.contextPath}/items/updateView.action";
+            document.itemsForm.submit();
+        }
     </script>
 </head>
 <body>
@@ -30,6 +35,7 @@
             <td>
                 <input type="button" value="查询" onclick="queryItems()">
                 <input type="button" value="批量删除" onclick="deleteItemsBatch()">
+                <input type="button" value="批量修改" onclick="updateItemsBatch()">
             </td>
         </tr>
     </table>

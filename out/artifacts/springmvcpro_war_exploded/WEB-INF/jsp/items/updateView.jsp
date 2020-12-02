@@ -5,19 +5,14 @@
 <head>
     <title>查询商品列表</title>
     <script type="text/javascript">
-        function deleteItemsBatch() {
+        function updateItemsBatch() {
             //提交form
-            document.itemsForm.action="${pageContext.request.contextPath}/items/deleteItemsBatch.action";
+            document.itemsForm.action="${pageContext.request.contextPath}/items/updateItemsBatch.action";
             document.itemsForm.submit();
         }
         function queryItems() {
             //提交form
             document.itemsForm.action="${pageContext.request.contextPath}/items/queryItems.action";
-            document.itemsForm.submit();
-        }
-        function updateItemsBatch() {
-            //提交form
-            document.itemsForm.action="${pageContext.request.contextPath}/items/updateView.action";
             document.itemsForm.submit();
         }
     </script>
@@ -34,7 +29,6 @@
         <tr>
             <td>
                 <input type="button" value="查询" onclick="queryItems()">
-                <input type="button" value="批量删除" onclick="deleteItemsBatch()">
                 <input type="button" value="批量修改" onclick="updateItemsBatch()">
             </td>
         </tr>
@@ -42,20 +36,19 @@
 商品列表：
     <table width="100%" border="1">
         <tr>
-            <td>选择</td>
             <td>商品名称</td>
             <td>商品价格</td>
+            <td>生产日期</td>
             <td>商品描述</td>
-            <td>操作</td>
         </tr>
-        <c:forEach items="${itemsList}" var="item">
-        <tr>
-            <td><input type="checkbox" name="items_id" value="${item.id}"></td>
-            <td>${item.name}</td>
-            <td>${item.price}</td>
-            <td>${item.detail}</td>
+        <c:forEach items="${itemsList}" var="item" varStatus="status">
+            <input type="hidden" name="itemsCustomList[${status.index }].id" value="${item.id}"/>
+            <tr>
+            <td><input type="text" name="itemsCustomList[${status.index }].name" value="${item.name}"/></td>
+            <td><input type="text" name="itemsCustomList[${status.index }].price" value="${item.price}"/></td>
+            <td><input type="text" name ="itemsCustomList[${status.index }].createtime" value="<fmt:formatDate value="${item.createtime}"  pattern="yyyy-MM-dd HH:mm:ss"/>"/></td>
             <td>
-                <a href="${pageContext.request.contextPath}/items/editItems.action?id=${item.id}">修改</a>
+                <input type="text" name="itemsCustomList[${status.index }].detail" value="${item.detail}"/>
             </td>
         </tr>
         </c:forEach>

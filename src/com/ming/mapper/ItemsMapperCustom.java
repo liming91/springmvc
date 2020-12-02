@@ -13,4 +13,5 @@ public interface ItemsMapperCustom {
     //批量删除商品
     void deleteBatchItems(Integer[] items_id);
 
+    void updateBatchItems(List<ItemsCustom> customList);
 }
