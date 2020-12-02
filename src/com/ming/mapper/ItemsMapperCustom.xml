@@ -21,6 +21,19 @@
      <include refid="query_items_where"></include>
      </where>
   </select>
-
+    <sql id="batch_delete_items_where">
+        <if test="array!=null">
+            <foreach collection="array" item="item" index="index" open="id in (" close=")" separator="," >
+                #{item}
+            </foreach>
+        </if>
+    </sql>
+    <!--批量删除-->
+    <delete id="deleteBatchItems" parameterType="Integer[]">
+    delete from items
+    <where>
+        <include refid="batch_delete_items_where"></include>
+    </where>
+    </delete>
 
 </mapper>

@@ -45,4 +45,12 @@ public class ItemsServiceImpl implements ItemsService{
         itemsCustom.setId(id);
         itemsMapper.updateByPrimaryKeyWithBLOBs(itemsCustom);
     }
+
+    @Override
+    public void deleteBatchItems(Integer[] itemsId) {
+        if(itemsId.length<0){
+            throw new RuntimeException("参数为空！");
+        }
+        itemsMapperCustom.deleteBatchItems(itemsId);
+    }
 }

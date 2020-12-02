@@ -14,29 +14,31 @@
     <table width="100%" border="1">
         <tr>
             <td>商品名称</td>
-            <td><input type="text" value="${itemsCustom.name}"></td>
+            <td><input type="text" name ="name" value="${itemsCustom.name}"></td>
         </tr>
         <tr>
             <td>商品价格</td>
-            <td><input type="text" value="${itemsCustom.price}"></td>
+            <td><input type="text" name ="price" value="${itemsCustom.price}"></td>
         </tr>
         <tr>
             <td>日期</td>
-            <td><input type="text" value="<fmt:formatDate value="${itemsCustom.createtime}"  pattern="yyyy-mm-dd hh:mm:ss"/>"></td>
-        </tr>
-        <tr>
-            <td>商品图片</td>
             <td>
-                <c:if test="${itemsCustom.price!=null}">
-                    <img src="/pric/${item.price}" width="100" height="100"/>
-                </c:if>
-                <input type="file" name="priceFile"/>
+                <input type="text" name ="createtime" value="<fmt:formatDate value="${itemsCustom.createtime}"  pattern="yyyy-MM-dd HH:mm:ss"/>">
             </td>
         </tr>
+<%--        <tr>--%>
+<%--            <td>商品图片</td>--%>
+<%--            <td>--%>
+<%--                <c:if test="${itemsCustom.price!=null}">--%>
+<%--                    <img src="/pric/${item.price}" width="100" height="100"/>--%>
+<%--                </c:if>--%>
+<%--                <input type="file" name="priceFile"/>--%>
+<%--            </td>--%>
+<%--        </tr>--%>
         <tr>
             <td>商品描述</td>
             <td>
-                <textarea rows="8" cols="30">${itemsCustom.detail}</textarea>
+                <textarea name="detail" rows="8" cols="30">${itemsCustom.detail}</textarea>
             </td>
         </tr>
         <tr>

@@ -26,7 +26,7 @@
     默认加载了很多的参数绑定方法，比如json的转换解析器就默认加载了
     实际开发中使用mvc:annotation-driven注解
     -->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
     <!--视图解析器
     解析jsp视图，默认使用jstl标签，classpath下面有jstl的包
     -->
@@ -34,4 +34,15 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--自定义参数绑定-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!--转换器-->
+        <property name="converters">
+            <list>
+                <!--日期类型的转换-->
+               <bean class="com.ming.controller.converter.DateConverter"></bean>
+            </list>
+        </property>
+    </bean>
+
 </beans>
