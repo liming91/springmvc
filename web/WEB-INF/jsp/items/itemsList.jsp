@@ -29,6 +29,12 @@
         <tr>
             <td>
                 商品名称：<input type="text" name="itemsCustom.name">
+                <select name="itemsType">
+                    <c:forEach items="${itemsType}" var="item">
+                        <option value="${item.key}">${item.value}</option>
+                    </c:forEach>
+                </select>
+
             </td>
         </tr>
         <tr>

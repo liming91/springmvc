@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class ItemsServiceImpl implements ItemsService{
+public class ItemsServiceImpl implements ItemsService {
 
     @Autowired
     private ItemsMapperCustom itemsMapperCustom;
@@ -30,9 +30,12 @@ public class ItemsServiceImpl implements ItemsService{
         Items items = itemsMapper.selectByPrimaryKey(id);
         //可能中间对数据库的商品信息进行处理
         //..比如处理时间，显示过期不过期，给扩展类添加过期标示，用于页面展示
-       //将items的属性值拷贝到ItemsCustom
-        ItemsCustom itemsCustom = new ItemsCustom();
-        BeanUtils.copyProperties(items,itemsCustom);
+        //将items的属性值拷贝到ItemsCustom
+        ItemsCustom itemsCustom = null;
+        if (items != null) {
+            itemsCustom = new ItemsCustom();
+            BeanUtils.copyProperties(items, itemsCustom);
+        }
         return itemsCustom;
     }
 
@@ -48,14 +51,14 @@ public class ItemsServiceImpl implements ItemsService{
 
     @Override
     public void updateBatchItems(List<ItemsCustom> customList) {
-        if(customList.size()>0){
+        if (customList.size() > 0) {
             itemsMapperCustom.updateBatchItems(customList);
         }
     }
 
     @Override
     public void deleteBatchItems(Integer[] items_id) {
-        if(items_id.length<0){
+        if (items_id.length < 0) {
             throw new RuntimeException("参数为空！");
         }
         itemsMapperCustom.deleteBatchItems(items_id);

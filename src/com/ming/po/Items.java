@@ -1,10 +1,12 @@
 package com.ming.po;
 
+import org.springframework.lang.NonNull;
+import sun.plugin2.message.Message;
+
 import java.util.Date;
 
 public class Items {
     private Integer id;
-
     private String name;
 
     private Float price;
