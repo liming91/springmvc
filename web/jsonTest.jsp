@@ -19,6 +19,7 @@
                 url: "${pageContext.request.contextPath}/jsonTest/requestJson.action",
                 contentType:"application/json;charset=UTF-8",
                 data: JSON.stringify({"name":"手机","price":999}),
+                //data:' {"name":"手机","price":999}',
                 success: function(data){
                     //返回json
                     alert( "data: " + data );
@@ -30,7 +31,20 @@
         }
         //请求的是key/value，输出的是json
         function  responseJson() {
-
+            $.ajax({
+                type: "post",
+                //请求的是key/value不需要指定contentType，默认就是
+                //contentType:"application/json;charset=UTF-8",
+                url: "${pageContext.request.contextPath}/jsonTest/responseJson.action",
+                data: "name=手机&price=999",
+                success: function(data){
+                    //返回json
+                    alert( "data: " + data );
+                },
+                error:function (error) {
+                    alert( "error: " + error );
+                }
+            });
         }
 
     </script>

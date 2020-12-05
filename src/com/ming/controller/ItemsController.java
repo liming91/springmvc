@@ -150,4 +150,18 @@ public class ItemsController {
         itemService.updateBatchItems(itemsQueryVo.getItemsCustomList());
         return "forward:/items/queryItems.action";
     }
+
+    /**
+     * 根据id查询商品，使用RESTful风格
+     * mapping中的id将这个url位置的参数传到PathVariable注解指定的名称中
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("/itemsView/{id}")
+    public ItemsCustom itemsView(@PathVariable("id") Integer id) throws Exception {
+       ItemsCustom itemsCustom = itemService.findItemsById(id);
+       return itemsCustom;
+    }
 }

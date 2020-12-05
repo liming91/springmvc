@@ -20,7 +20,18 @@ public class JsonTestController {
      */
     @RequestMapping(value = "/requestJson")
     public @ResponseBody ItemsCustom requestJson(@RequestBody ItemsCustom itemsCustom){
-        System.out.println(itemsCustom);
+        //ResponseBody将Java对象itemsCustom转出json输出
+        return itemsCustom;
+    }
+
+    /**
+     * 请求kev/value输出json
+     * @param itemsCustom
+     * @return
+     */
+    @RequestMapping(value = "/responseJson")
+    public @ResponseBody ItemsCustom responseJson(ItemsCustom itemsCustom){
+        //ResponseBody将Java对象itemsCustom转出json输出
         return itemsCustom;
     }
 }

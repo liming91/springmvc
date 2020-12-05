@@ -59,4 +59,34 @@
             <value>5242880</value>
         </property>
     </bean>
+    <!--静态资源的解析js,img,css-->
+    <mvc:resources mapping="/js/" location="/js/**"/>
+
+    <!--针对HandlerMapping配置拦截器
+    一般不推荐使用此拦截器
+    -->
+<!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+               <ref bean="myHandlerInteceptor"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="myHandlerInteceptor" class="com.ming.interceptor.MyHandlerInteceptor"/>-->
+
+    <!--全局拦截器配置-->
+    <mvc:interceptors>
+        <!--多个拦截器按顺序执行-->
+        <mvc:interceptor>
+            <!--/**拦截所有的url包括子路径-->
+            <mvc:mapping path="/**"/>
+            <bean id="loginHandlerInteceptor" class="com.ming.interceptor.LoginHandlerInteceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--/**拦截所有的url包括子路径-->
+            <mvc:mapping path="/**"/>
+            <bean id="myHandlerInteceptor" class="com.ming.interceptor.MyHandlerInteceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
